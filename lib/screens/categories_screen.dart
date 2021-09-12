@@ -2,6 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 import '../widgets/dummy_data.dart';
+import '../widgets/category_item.dart';
 
 class CategoriesScreen extends StatelessWidget {
   //const CategoriesScreen({Key key}) : super(key: key);
@@ -13,7 +14,11 @@ class CategoriesScreen extends StatelessWidget {
         maxCrossAxisExtent: 200, childAspectRatio: 3 / 2,
         mainAxisSpacing: 20, crossAxisSpacing: 20,
       ) ,
-      children: ,
+
+      // Map dummy data(DUMMY_CATEGORIES) into the widget(Category Item)
+      children: DUMMY_CATEGORIES.map((catData){
+        return CategoryItem(catData.modelTitle, catData.modelColor);
+      }).toList(),
     );
   }
 }
