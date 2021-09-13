@@ -13,31 +13,31 @@ const DUMMY_CATEGORIES = const [
     modelTitle: 'Quick & Easy',
     modelColor: Colors.red,
   ),
-  // CategoryModel(
-  //   id: 'c3',
-  //   title: 'Hamburgers',
-  //   color: Colors.orange,
-  // ),
-  // CategoryModel(
-  //   id: 'c4',
-  //   title: 'German',
-  //   color: Colors.amber,
-  // ),
-  // CategoryModel(
-  //   id: 'c5',
-  //   title: 'Light & Lovely',
-  //   color: Colors.blue,
-  // ),
-  // CategoryModel(
-  //   id: 'c6',
-  //   title: 'Exotic',
-  //   color: Colors.green,
-  // ),
-  // CategoryModel(
-  //   id: 'c7',
-  //   title: 'Breakfast',
-  //   color: Colors.lightBlue,
-  // ),
+  CategoryModel(
+    id: 'c3',
+    modelTitle: 'Hamburgers',
+    modelColor: Colors.orange,
+  ),
+  CategoryModel(
+    id: 'c4',
+    modelTitle: 'Malaysia',
+    modelColor: Colors.amber,
+  ),
+  CategoryModel(
+    id: 'c5',
+    modelTitle: 'Light & Lovely',
+    modelColor: Colors.blue,
+  ),
+  CategoryModel(
+    id: 'c6',
+    modelTitle: 'Exotic',
+    modelColor: Colors.green,
+  ),
+  CategoryModel(
+    id: 'c7',
+    modelTitle: 'Breakfast',
+    modelColor: Colors.lightBlue,
+  ),
   // CategoryModel(
   //   id: 'c8',
   //   title: 'Asian',

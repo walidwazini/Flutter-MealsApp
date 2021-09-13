@@ -10,7 +10,12 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'DeliMeals',
       theme: ThemeData(
-        primarySwatch: Colors.blue,
+        primarySwatch: Colors.deepOrange,
+        accentColor: Colors.purpleAccent,
+        canvasColor: Color.fromRGBO(255, 244, 224, 1),
+        fontFamily: 'Raleway',
+        textTheme: ThemeData.light().textTheme.copyWith(
+        ),
       ),
       home: CategoriesScreen(),
     );

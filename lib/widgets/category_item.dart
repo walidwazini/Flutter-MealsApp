@@ -11,7 +11,7 @@ class CategoryItem extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       padding: const EdgeInsets.all(13),
-      child: Text(itemTitle),
+      child: Text(itemTitle, style: Theme.of(context).textTheme.bodyText1),
       decoration: BoxDecoration(
         gradient: LinearGradient(colors: [
           itemColor.withOpacity(0.7),
