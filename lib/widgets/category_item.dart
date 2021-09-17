@@ -4,14 +4,15 @@ import '../screens/category_meals_screen.dart';
 
 class CategoryItem extends StatelessWidget {
   // const CategoryItem({Key key}) : super(key: key);
+  final String id;
   final String itemTitle;
   final Color itemColor;
 
-  CategoryItem(this.itemTitle, this.itemColor);
+  CategoryItem(this.id, this.itemTitle, this.itemColor);
 
   void selectCategory(BuildContext konteks){
     Navigator.of(konteks).push(MaterialPageRoute(builder: (_){
-      return CategoryMealsScreen() ;
+      return CategoryMealsScreen(id,itemTitle) ;
     },),);
   }
 
