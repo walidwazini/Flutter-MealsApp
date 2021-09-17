@@ -9,17 +9,22 @@ class CategoryItem extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      padding: const EdgeInsets.all(13),
-      child: Text(itemTitle, style: Theme.of(context).textTheme.bodyText1),
-      decoration: BoxDecoration(
-        gradient: LinearGradient(colors: [
-          itemColor.withOpacity(0.7),
-          itemColor,
-        ],
-        begin: Alignment.topLeft , end: Alignment.bottomRight,
+    return InkWell(
+      onTap:  ,
+      splashColor: Theme.of(context).primaryColor,
+      borderRadius: BorderRadius.circular(15),
+      child: Container(
+        padding: const EdgeInsets.all(13),
+        child: Text(itemTitle, style: Theme.of(context).textTheme.bodyText1),
+        decoration: BoxDecoration(
+          gradient: LinearGradient(colors: [
+            itemColor.withOpacity(0.7),
+            itemColor,
+          ],
+          begin: Alignment.topLeft , end: Alignment.bottomRight,
+          ),
+          borderRadius: BorderRadius.circular(13),
         ),
-        borderRadius: BorderRadius.circular(13),
       ),
     );
   }

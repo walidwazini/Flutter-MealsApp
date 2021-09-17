@@ -14,8 +14,7 @@ class MyApp extends StatelessWidget {
         accentColor: Colors.purpleAccent,
         canvasColor: Color.fromRGBO(255, 244, 224, 1),
         fontFamily: 'Raleway',
-        textTheme: ThemeData.light().textTheme.copyWith(
-        ),
+        textTheme: ThemeData.light().textTheme.copyWith(),
       ),
       home: CategoriesScreen(),
     );
