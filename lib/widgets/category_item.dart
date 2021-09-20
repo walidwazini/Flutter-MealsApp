@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:meals_app_1/screens/category_meals_screen.dart';
 
 //import '../screens/category_meals_screen.dart';
 
@@ -18,7 +19,7 @@ class CategoryItem extends StatelessWidget {
     // },),);
 
     Navigator.of(konteks).pushNamed(
-        '/category-meals',
+        CategoryMealsScreen.routeName,
         arguments: {'id': id, 'title':itemTitle, 'color': itemColor } ,
     );
   }

@@ -38,11 +38,11 @@ const DUMMY_CATEGORIES = const [
     modelTitle: 'Breakfast',
     modelColor: Colors.lightBlue,
   ),
-  // CategoryModel(
-  //   id: 'c8',
-  //   title: 'Asian',
-  //   color: Colors.lightGreen,
-  // ),
+  CategoryModel(
+    id: 'c8',
+    modelTitle: 'Asian',
+    modelColor: Colors.lightGreen,
+  ),
   // CategoryModel(
   //   id: 'c9',
   //   title: 'French',

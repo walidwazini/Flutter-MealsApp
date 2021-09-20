@@ -18,8 +18,11 @@ class MyApp extends StatelessWidget {
         textTheme: ThemeData.light().textTheme.copyWith(),
       ),
       home: CategoriesScreen(),
+      //initialRoute: '/',
       routes: {
-        '/category-meals': (ctx) => CategoryMealsScreen()
+        //'/' : (konteks) => CategoriesScreen(),
+        //'/category-meals': (konteks) => CategoryMealsScreen()
+        CategoryMealsScreen.routeName : (konteks) => CategoryMealsScreen()
       },
     );
   }
