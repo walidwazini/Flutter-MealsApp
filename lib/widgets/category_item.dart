@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '../screens/category_meals_screen.dart';
+//import '../screens/category_meals_screen.dart';
 
 class CategoryItem extends StatelessWidget {
   // const CategoryItem({Key key}) : super(key: key);
@@ -11,9 +11,16 @@ class CategoryItem extends StatelessWidget {
   CategoryItem(this.id, this.itemTitle, this.itemColor);
 
   void selectCategory(BuildContext konteks){
-    Navigator.of(konteks).push(MaterialPageRoute(builder: (_){
-      return CategoryMealsScreen(id,itemTitle) ;
-    },),);
+    // MaterialPageRoute() is as a wrapper for animation between pages
+
+    // Navigator.of(konteks).push(MaterialPageRoute(builder: (_){
+    //   return CategoryMealsScreen(id,itemTitle) ;
+    // },),);
+
+    Navigator.of(konteks).pushNamed(
+        '/category-meals',
+        arguments: {'id': id, 'title':itemTitle, 'color': itemColor } ,
+    );
   }
 
   @override
