@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
 
+import '../widgets/meal_item.dart';
 import '../data/dummy_data.dart';
 
 class CategoryMealsScreen extends StatelessWidget {
   static const routeName = '/category-meals';
+
   //const CategoryMealsScreen({Key? key}) : super(key: key);
   // final String categoryId;
   // final String categoryTitle;
@@ -13,10 +15,10 @@ class CategoryMealsScreen extends StatelessWidget {
   @override
   Widget build(BuildContext konteks) {
     final routesArgs =
-        ModalRoute.of(konteks).settings.arguments as Map<String,dynamic>;
+        ModalRoute.of(konteks).settings.arguments as Map<String, dynamic>;
     final categoryTitle = routesArgs['title'];
     final categoryId = routesArgs['id'];
-    final categoryMeals = DUMMY_MEALS.where((meal){
+    final categoryMeals = DUMMY_MEALS.where((meal) {
       return meal.categories.contains(categoryId);
     }).toList();
 
@@ -25,9 +27,17 @@ class CategoryMealsScreen extends StatelessWidget {
           title: Text(categoryTitle),
         ),
         body: Center(
-          child: ListView.builder(itemBuilder: (ctx, index) {
-            return Text(categoryMeals[index].title);
-          } ,itemCount: categoryMeals.length ,),
+          child: ListView.builder(
+            itemBuilder: (ctx, index) {
+              return MealItem(
+                  title: categoryMeals[index].title,
+                  imageUrl: categoryMeals[index].imageUrl,
+                  duration: categoryMeals[index].duration,
+                  affordability: categoryMeals[index].affordability,
+                  complexity: categoryMeals[index].complexity);
+            },
+            itemCount: categoryMeals.length,
+          ),
         ));
   }
 }
