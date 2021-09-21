@@ -9,13 +9,12 @@ class MealItem extends StatelessWidget {
   final Complexity complexity;
   final Affordability affordability;
 
-  MealItem({
-      @required this.title,
+  MealItem(
+      {@required this.title,
       @required this.imageUrl,
       @required this.duration,
       @required this.affordability,
-      @required this.complexity
-  });
+      @required this.complexity});
 
   void selectMeal() {}
 
@@ -38,9 +37,17 @@ class MealItem extends StatelessWidget {
                     topLeft: Radius.circular(15),
                     topRight: Radius.circular(15),
                   ),
-                  child: Image.network( imageUrl,
-                    height: 250, width: double.infinity, fit: BoxFit.cover ,
+                  child: Image.network(
+                    imageUrl,
+                    height: 250,
+                    width: double.infinity,
+                    fit: BoxFit.cover,
                   ),
+                ),
+                Text(
+                  title,
+                  style: TextStyle(fontSize: 26, color: Colors.white),
+                  softWrap: true, overflow: TextOverflow.fade,
                 )
               ],
             )
