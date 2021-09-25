@@ -24,11 +24,9 @@ class MyApp extends StatelessWidget {
         //'/' : (konteks) => CategoriesScreen(),
         //'/category-meals': (konteks) => CategoryMealsScreen()
         CategoryMealsScreen.routeName : (konteks) => CategoryMealsScreen(),
-        //MealDetailScreen.routeName : (konteks) => MealDetailScreen(),
+        MealDetailScreen.routeName : (konteks) => MealDetailScreen(),
       },
-      //  Meaning is to load this route if any route is not registered
-      onGenerateRoute: (settings){
-        print(settings.arguments);
+      onUnknownRoute: (settings){
         return MaterialPageRoute(builder: (ctx) => CategoriesScreen());
       },
     );
