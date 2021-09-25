@@ -9,7 +9,7 @@ class MealDetailScreen extends StatelessWidget {
   Widget buildSectionTitle(BuildContext ctx, String text){
     return Container(
       margin: EdgeInsets.symmetric(vertical: 10),
-      child:Text('Ingredient', style: Theme.of(ctx).textTheme.headline6,),
+      child:Text(text, style: Theme.of(ctx).textTheme.headline6,),
     );
   }
 
@@ -50,7 +50,8 @@ class MealDetailScreen extends StatelessWidget {
                 },
                 itemCount: selectedMeal.ingredients.length,
               ) ,
-            )
+            ),
+            buildSectionTitle(context, 'Steps'),
           ],
         ));
   }
