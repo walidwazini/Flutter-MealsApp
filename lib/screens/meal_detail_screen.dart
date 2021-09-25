@@ -6,6 +6,13 @@ class MealDetailScreen extends StatelessWidget {
   //const MealDetailScreen({Key? key}) : super(key: key);
   static const routeName = '/meal-detail';
 
+  Widget buildSectionTitle(BuildContext ctx, String text){
+    return Container(
+      margin: EdgeInsets.symmetric(vertical: 10),
+      child:Text('Ingredient', style: Theme.of(ctx).textTheme.headline6,),
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     final mealId = ModalRoute.of(context).settings.arguments as String;
@@ -20,12 +27,10 @@ class MealDetailScreen extends StatelessWidget {
             // --- so need to import the data. and make a condition to compare the id
             Container(
               height: 300,width:double.infinity,
-              child: Image.network(selectedMeal.imageUrl, fit: BoxFit.cover,), ),
-            Text('THe meal id - $mealId --'),
-            Container(
-              margin: EdgeInsets.symmetric(vertical: 10),
-              child:Text('Ingredient', style: Theme.of(context).textTheme.headline6,),
+              child: Image.network(selectedMeal.imageUrl, fit: BoxFit.cover,),
             ),
+            Text('THe meal id - $mealId --'),
+            buildSectionTitle(context, 'Ingredients'),
             Container( height: 150, width: 500,
               margin: EdgeInsets.all(10),  padding: EdgeInsets.all(5),
               decoration: BoxDecoration(
