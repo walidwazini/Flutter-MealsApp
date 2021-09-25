@@ -71,27 +71,19 @@ class MealItem extends StatelessWidget {
             Stack(
               children: <Widget>[
                 ClipRRect(
-                  borderRadius: BorderRadius.only(
-                    topLeft: Radius.circular(15),
-                    topRight: Radius.circular(15),
-                  ),
+                  borderRadius: BorderRadius.only(topLeft: Radius.circular(15), topRight: Radius.circular(15)),
                   child: Image.network(
-                    imageUrl,
-                    height: 250,
-                    width: double.infinity,
-                    fit: BoxFit.cover,
+                    imageUrl, fit: BoxFit.cover,
+                    height: 250, width: double.infinity,
                   ),
                 ),
-                Positioned(
-                  bottom: 20,
-                  right: 10,
+                Positioned(bottom: 20, right: 10,
                   child: Container(
-                    width: 300,
-                    color: Colors.black54,
+                    width: 300, color: Colors.white70.withOpacity(0.5),
                     padding: EdgeInsets.symmetric(vertical: 5, horizontal: 20),
                     child: Text(
                       title,
-                      style: TextStyle(fontSize: 26, color: Colors.white),
+                      style: TextStyle(fontSize: 26, color: Colors.black),
                       softWrap: true,
                       overflow: TextOverflow.fade,
                     ),
@@ -100,7 +92,7 @@ class MealItem extends StatelessWidget {
               ],
             ),
             Padding(
-              padding: const EdgeInsets.all(20.0),
+              padding: const EdgeInsets.all(15.0),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceAround,
                 children: [
