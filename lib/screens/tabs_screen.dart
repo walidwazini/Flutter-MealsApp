@@ -13,17 +13,18 @@ class TabsScreen extends StatefulWidget {
 class _TabsScreenState extends State<TabsScreen> {
   @override
   Widget build(BuildContext context) {
-    return DefaultTabController(length: 2, child: Scaffold(
+    return Scaffold(
       appBar: AppBar(
         title: Text('Meals Tab'),
-        bottom: TabBar(tabs: [
-          Tab(icon: Icon(Icons.category),text: 'Categories',),
-          Tab(icon: Icon(Icons.favorite),text: 'Favourites',),
-        ],),
       ),
-      body: TabBarView(children: [
-        CategoriesScreen(),FavouritesScreen()
-      ],),
-    ));
+      body: null,
+      bottomNavigationBar: BottomNavigationBar(
+        backgroundColor: Theme.of(context).primaryColor,
+        items: [
+          BottomNavigationBarItem(icon: Icon(Icons.category_rounded), label: 'Categories', ),
+          BottomNavigationBarItem(icon: Icon(Icons.favorite), label: 'Favourites', ),
+        ],
+      ),
+    );
   }
 }
