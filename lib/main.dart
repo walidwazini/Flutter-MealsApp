@@ -4,6 +4,7 @@ import './screens/category_meals_screen.dart';
 import './screens/categories_screen.dart';
 import './screens/meal_detail_screen.dart';
 import './screens/tabs_screen.dart';
+import './screens/filter_screen.dart';
 
 void main() => runApp(MyApp());
 
@@ -26,13 +27,14 @@ class MyApp extends StatelessWidget {
           headline6: TextStyle(fontSize: 20,fontFamily: 'RobotoCondensed', fontWeight: FontWeight.bold ),
         ),
       ),
-      home: TabsScreen(),
-      //initialRoute: '/',
+      //home: TabsScreen(),
+      initialRoute: '/',
       routes: {
-        //'/' : (konteks) => CategoriesScreen(),
+        '/' : (konteks) => TabsScreen(),
         //'/category-meals': (konteks) => CategoryMealsScreen()
         CategoryMealsScreen.routeName : (konteks) => CategoryMealsScreen(),
         MealDetailScreen.routeName : (konteks) => MealDetailScreen(),
+        FiltersScreen.routeName : (konteks) => FiltersScreen()
       },
       onUnknownRoute: (settings){
         return MaterialPageRoute(builder: (ctx) => CategoriesScreen());
