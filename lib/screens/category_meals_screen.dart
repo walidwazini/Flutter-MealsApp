@@ -11,6 +11,11 @@ class CategoryMealsScreen extends StatefulWidget {
 }
 
 class _CategoryMealsScreenState extends State<CategoryMealsScreen> {
+
+  void _removeMeal(String mealId){
+
+  }
+
   @override
   Widget build(BuildContext konteks) {
     final routesArgs =
