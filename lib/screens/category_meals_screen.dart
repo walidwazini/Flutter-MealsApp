@@ -19,6 +19,11 @@ class _CategoryMealsScreenState extends State<CategoryMealsScreen> {
   // LOAD ALL MEALS based on their id after page is loaded
   @override
   void initState() {
+    super.initState();
+  }
+
+  @override
+  void didChangeDependencies() {
     final routesArgs =
         ModalRoute.of(context).settings.arguments as Map<String, dynamic>;
     categoryTitle = routesArgs['title'];
@@ -26,7 +31,7 @@ class _CategoryMealsScreenState extends State<CategoryMealsScreen> {
     displayedMeals = DUMMY_MEALS.where((meal) {
       return meal.categories.contains(categoryId);
     }).toList();
-    super.initState();
+    super.didChangeDependencies();
   }
 
   void _removeMeal(String mealId) {
