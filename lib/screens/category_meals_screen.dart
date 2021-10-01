@@ -20,7 +20,7 @@ class _CategoryMealsScreenState extends State<CategoryMealsScreen> {
   @override
   void initState() {
     final routesArgs =
-    ModalRoute.of(context).settings.arguments as Map<String, dynamic>;
+        ModalRoute.of(context).settings.arguments as Map<String, dynamic>;
     categoryTitle = routesArgs['title'];
     final categoryId = routesArgs['id'];
     displayedMeals = DUMMY_MEALS.where((meal) {
@@ -29,16 +29,14 @@ class _CategoryMealsScreenState extends State<CategoryMealsScreen> {
     super.initState();
   }
 
-  void _removeMeal(String mealId){
+  void _removeMeal(String mealId) {
     setState(() {
-
+      displayedMeals.removeWhere((mealElement) => mealElement.id == mealId);
     });
   }
 
   @override
   Widget build(BuildContext konteks) {
-
-
     return Scaffold(
         appBar: AppBar(
           title: Text(categoryTitle),
@@ -47,14 +45,16 @@ class _CategoryMealsScreenState extends State<CategoryMealsScreen> {
           child: ListView.builder(
             itemBuilder: (ctx, index) {
               return MealItem(
-                  id:categoryMeals[index].id,
-                  title: categoryMeals[index].title,
-                  imageUrl: categoryMeals[index].imageUrl,
-                  duration: categoryMeals[index].duration,
-                  affordability: categoryMeals[index].affordability,
-                  complexity: categoryMeals[index].complexity);
+                id: displayedMeals[index].id,
+                title: displayedMeals[index].title,
+                imageUrl: displayedMeals[index].imageUrl,
+                duration: displayedMeals[index].duration,
+                affordability: displayedMeals[index].affordability,
+                complexity: displayedMeals[index].complexity,
+                removeItem: _removeMeal,
+              );
             },
-            itemCount: categoryMeals.length,
+            itemCount: displayedMeals.length,
           ),
         ));
   }
