@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 
 import '../widgets/meal_item.dart';
 import '../data/dummy_data.dart';
+import '../models/meal.dart';
 
 class CategoryMealsScreen extends StatefulWidget {
   static const routeName = '/category-meals';
@@ -11,6 +12,10 @@ class CategoryMealsScreen extends StatefulWidget {
 }
 
 class _CategoryMealsScreenState extends State<CategoryMealsScreen> {
+  // Add mutable property
+  String categoryTitle;
+  List<Meal> displayedMeals;
+
   // LOAD ALL MEALS based on their id after page is loaded
   @override
   void initState() {
