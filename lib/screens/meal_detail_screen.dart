@@ -6,6 +6,11 @@ class MealDetailScreen extends StatelessWidget {
   //const MealDetailScreen({Key? key}) : super(key: key);
   static const routeName = '/meal-detail';
 
+  final Function toggleFav;
+  final Function isFavourite;
+
+  MealDetailScreen({this.toggleFav, this.isFavourite});
+
   Widget buildSectionTitle(BuildContext ctx, String text) {
     return Container(
       margin: EdgeInsets.symmetric(vertical: 10),
@@ -39,47 +44,48 @@ class MealDetailScreen extends StatelessWidget {
     final selectedMeal =
         DUMMY_MEALS.firstWhere((theMeal) => theMeal.id == mealId);
     return Scaffold(
-        appBar: AppBar(
-          title: Text(
-            '${selectedMeal.title}',
-          ),
+      appBar: AppBar(
+        title: Text(
+          '${selectedMeal.title}',
         ),
-        body: SingleChildScrollView(
-          child: Column(
-            children: [
-              // 1) For image, need to find which id the user selected,
-              // --- so need to import the data. and make a condition to compare the id
-              Container(
-                height: 300,
-                width: double.infinity,
-                child: Image.network(
-                  selectedMeal.imageUrl,
-                  fit: BoxFit.cover,
-                ),
+      ),
+      body: SingleChildScrollView(
+        child: Column(
+          children: [
+            // 1) For image, need to find which id the user selected,
+            // --- so need to import the data. and make a condition to compare the id
+            Container(
+              height: 300,
+              width: double.infinity,
+              child: Image.network(
+                selectedMeal.imageUrl,
+                fit: BoxFit.cover,
               ),
-              buildSectionTitle(context, 'Ingredients'),
-              buildContainer(
-                ListView.builder(
-                  itemBuilder: (ctx, index) {
-                    return Card(
-                      color: Theme.of(context).accentColor,
-                      child: Padding(
-                        padding: const EdgeInsets.symmetric(
-                            vertical: 5, horizontal: 10),
-                        child: Text(selectedMeal.ingredients[index]),
-                      ),
-                    );
-                  },
-                  itemCount: selectedMeal.ingredients.length,
-                ),
+            ),
+            buildSectionTitle(context, 'Ingredients'),
+            buildContainer(
+              ListView.builder(
+                itemBuilder: (ctx, index) {
+                  return Card(
+                    color: Theme.of(context).accentColor,
+                    child: Padding(
+                      padding: const EdgeInsets.symmetric(
+                          vertical: 5, horizontal: 10),
+                      child: Text(selectedMeal.ingredients[index]),
+                    ),
+                  );
+                },
+                itemCount: selectedMeal.ingredients.length,
               ),
-              buildSectionTitle(context, 'Steps'),
-              buildContainer(ListView.builder(
-                itemBuilder: (ctx,index) => Column(
+            ),
+            buildSectionTitle(context, 'Steps'),
+            buildContainer(
+              ListView.builder(
+                itemBuilder: (ctx, index) => Column(
                   children: [
                     ListTile(
                       leading: CircleAvatar(
-                        child:Text('${(index + 1)}') ,
+                        child: Text('${(index + 1)}'),
                       ),
                       title: Text(selectedMeal.steps[index]),
                     ),
@@ -88,16 +94,18 @@ class MealDetailScreen extends StatelessWidget {
                 ),
                 itemCount: selectedMeal.steps.length,
               ),
-              ),
-              SizedBox(height: 70,)
-            ],
-          ),
+            ),
+            SizedBox(
+              height: 70,
+            )
+          ],
         ),
+      ),
       floatingActionButton: FloatingActionButton(
-        child: Icon(Icons.delete),
-        onPressed: (){
-          Navigator.of(context).pop(mealId);
-        },
+        child: Icon(
+          isFavourite(mealId) ? Icons.star : Icons.star_border,
+        ),
+        onPressed:() =>  toggleFav(mealId),
       ),
     );
   }

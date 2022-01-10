@@ -34,24 +34,45 @@ class _NewMyAppState extends State<NewMyApp> {
   };
 
   List<Meal> _availableMeals = DUMMY_MEALS;
+  List<Meal> _favouriteMeals = [];
 
-  void _setFilters(Map<String, bool> filterData){
-     setState(() {
-       _filters = filterData;
+  void _setFilters(Map<String, bool> filterData) {
+    setState(() {
+      _filters = filterData;
 
-       _availableMeals = DUMMY_MEALS.where((element) {
-         if (_filters['gluten']  && !element.isGlutenFree){
-           return false;
-         }  else if (_filters['lactose'] && !element.isLactoseFree){
-           return false;
-         } else if (_filters['vegan'] && !element.isVegan){
-           return false;
-         }  else if (_filters['vegetarian'] && !element.isVegetarian){
-           return false;
-         }
-         return true;
-       } ).toList();
-     });
+      _availableMeals = DUMMY_MEALS.where((element) {
+        if (_filters['gluten'] && !element.isGlutenFree) {
+          return false;
+        } else if (_filters['lactose'] && !element.isLactoseFree) {
+          return false;
+        } else if (_filters['vegan'] && !element.isVegan) {
+          return false;
+        } else if (_filters['vegetarian'] && !element.isVegetarian) {
+          return false;
+        }
+        return true;
+      }).toList();
+    });
+  }
+
+  void _toggleFavourite(String mealId) {
+    final existingIndex =
+        _favouriteMeals.indexWhere((meal) => meal.id == mealId);
+    if (existingIndex >= 0) {
+      setState(() {
+        _favouriteMeals.removeAt(existingIndex);
+      });
+    } else {
+      setState(() {
+        _favouriteMeals.add(
+          DUMMY_MEALS.firstWhere((meal) => meal.id = mealId),
+        );
+      });
+    }
+  }
+
+  bool _isMealFavourite(String id) {
+    return _favouriteMeals.any((meal) => meal.id == id);
   }
 
   @override
@@ -78,27 +99,24 @@ class _NewMyAppState extends State<NewMyApp> {
                   fontWeight: FontWeight.bold),
             ),
       ),
-      //home: TabsScreen(),
       initialRoute: '/',
       routes: {
-        '/': (konteks) => TabsScreen(),
-        //'/category-meals': (konteks) => CategoryMealsScreen()
-        CategoryMealsScreen.routeName: (konteks) => CategoryMealsScreen(_availableMeals),
-        MealDetailScreen.routeName: (konteks) => MealDetailScreen(),
+        '/': (konteks) => TabsScreen(favouriteMealsList: _favouriteMeals),
+        CategoryMealsScreen.routeName: (konteks) =>
+            CategoryMealsScreen(_availableMeals),
+        MealDetailScreen.routeName: (konteks) => MealDetailScreen(
+              toggleFav: _toggleFavourite,
+              isFavourite: _isMealFavourite,
+            ),
         FiltersScreen.routeName: (konteks) => FiltersScreen(
-          saveFilters:_setFilters,
-          currentFilters: _filters,
-        )
+              saveFilters: _setFilters,
+              currentFilters: _filters,
+            )
       },
-      // onGenerateRoute: (settings){
-      //   print(settings.arguments);
-      //   return MaterialPageRoute(builder: (konteks) => CategoriesScreen());
-      // },
       onUnknownRoute: (settings) {
         return MaterialPageRoute(builder: (ctx) => CategoriesScreen());
       },
     );
-
   }
 }
 
