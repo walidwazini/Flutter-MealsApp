@@ -34,6 +34,7 @@ class MealDetailScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    // Todo: To receive meal id from previous page meal item widget
     final mealId = ModalRoute.of(context).settings.arguments as String;
     final selectedMeal =
         DUMMY_MEALS.firstWhere((theMeal) => theMeal.id == mealId);

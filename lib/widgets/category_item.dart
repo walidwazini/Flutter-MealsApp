@@ -11,7 +11,7 @@ class CategoryItem extends StatelessWidget {
 
   CategoryItem(this.id, this.itemTitle, this.itemColor);
 
-  void selectCategory(BuildContext konteks){
+  void selectCategory(BuildContext konteks) {
     // MaterialPageRoute() is as a wrapper for animation between pages
 
     // Navigator.of(konteks).push(MaterialPageRoute(builder: (_){
@@ -19,8 +19,8 @@ class CategoryItem extends StatelessWidget {
     // },),);
 
     Navigator.of(konteks).pushNamed(
-        CategoryMealsScreen.routeName,
-        arguments: {'id': id, 'title':itemTitle, 'color': itemColor } ,
+      CategoryMealsScreen.routeName,
+      arguments: {'id': id, 'title': itemTitle, 'color': itemColor},
     );
   }
 
@@ -32,13 +32,20 @@ class CategoryItem extends StatelessWidget {
       borderRadius: BorderRadius.circular(15),
       child: Container(
         padding: const EdgeInsets.all(13),
-        child: Text(itemTitle, style: Theme.of(context).textTheme.bodyText1),
+        child: Center(
+          child: Text(
+            itemTitle,
+            style: Theme.of(context).textTheme.bodyText1,
+          ),
+        ),
         decoration: BoxDecoration(
-          gradient: LinearGradient(colors: [
-            itemColor.withOpacity(0.7),
-            itemColor,
-          ],
-          begin: Alignment.topLeft , end: Alignment.bottomRight,
+          gradient: LinearGradient(
+            colors: [
+              itemColor.withOpacity(0.7),
+              itemColor,
+            ],
+            begin: Alignment.topLeft,
+            end: Alignment.bottomRight,
           ),
           borderRadius: BorderRadius.circular(13),
         ),
